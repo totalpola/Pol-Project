@@ -2,6 +2,7 @@ package dryTest;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -61,12 +62,13 @@ public class VOTINGSYSTEM extends JFrame {
 	DefaultListModel<String> voteList = new DefaultListModel();
 	
 	//candidates
-	int LeeJiun = 0;
-	int momo = 0;
-	int sana = 0;
-	int jisoo = 0;
-	int mina = 0;
-	int jennie = 0;
+	Stack<String> LeeJiun = new Stack();  
+	Stack<String> momo = new Stack();  
+	Stack<String> sana = new Stack();  
+	Stack<String> jisoo = new Stack();  
+	Stack<String> mina = new Stack();  
+	Stack<String> nayeon = new Stack();  
+
 	
 //	ichehcheck lang niya kung nasa `votelist` ba yung nka check
     private int check(JCheckBox check){
@@ -96,13 +98,13 @@ public class VOTINGSYSTEM extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		
+		JLabel nameLabel = new JLabel("New label");
 		JPanel welcomePanel = new JPanel(); //welcome frame
-		JPanel mainMenuFrame = new JPanel(); //mainmenu Frame
 		JPanel voteFrame = new JPanel(); //	Vote Frame
 		JPanel viewVote = new JPanel(); //view vote frame
+		JPanel mainMenuFrame = new JPanel(); //mainmenu Frame
 		
-		mainMenuFrame.setVisible(false);	
+		
 		viewVote.setVisible(false);
 		voteFrame.setVisible(false);
 		
@@ -131,9 +133,11 @@ public class VOTINGSYSTEM extends JFrame {
 		        if (chckbxNewCheckBox.isSelected()){
 		            voteList.addElement(chckbxNewCheckBox.getText().toString());
 		            jList1.setModel(voteList);  
+		            nayeon.add(nameLabel.getText());
 		        }else{
 		           voteList.removeElement(chckbxNewCheckBox.getText().toString());
 		            jList1.setModel(voteList);  
+		            nayeon.pop();
 		        }
 			}
 		});
@@ -146,9 +150,12 @@ public class VOTINGSYSTEM extends JFrame {
 		        if (chckbxNewCheckBox_1.isSelected()){
 		            voteList.addElement(chckbxNewCheckBox_1.getText().toString());
 		            jList1.setModel(voteList);  
+		            momo.add(nameLabel.getText());
+		            
 		        }else{
 		           voteList.removeElement(chckbxNewCheckBox_1.getText().toString());
-		            jList1.setModel(voteList);  
+		            jList1.setModel(voteList); 
+		            momo.pop();
 		        }
 			}
 		});
@@ -161,9 +168,11 @@ public class VOTINGSYSTEM extends JFrame {
 		        if (chckbxNewCheckBox_2.isSelected()){
 		            voteList.addElement(chckbxNewCheckBox_2.getText().toString());
 		            jList1.setModel(voteList);  
+		            mina .add(nameLabel.getText());
 		        }else{
 		           voteList.removeElement(chckbxNewCheckBox_2.getText().toString());
 		            jList1.setModel(voteList);  
+		            mina.pop();
 		        }
 			}
 		});
@@ -176,9 +185,11 @@ public class VOTINGSYSTEM extends JFrame {
 		        if (chckbxNewCheckBox_3.isSelected()){
 		            voteList.addElement(chckbxNewCheckBox_3.getText().toString());
 		            jList1.setModel(voteList);  
+		            sana.add(nameLabel.getText());
 		        }else{
 		           voteList.removeElement(chckbxNewCheckBox_3.getText().toString());
 		            jList1.setModel(voteList);  
+		            sana.pop();
 		        }
 			}
 		});
@@ -191,9 +202,11 @@ public class VOTINGSYSTEM extends JFrame {
 		        if (chckbxNewCheckBox_4.isSelected()){
 		            voteList.addElement(chckbxNewCheckBox_4.getText().toString());
 		            jList1.setModel(voteList);  
+		            jisoo.add(nameLabel.getText());
 		        }else{
 		           voteList.removeElement(chckbxNewCheckBox_4.getText().toString());
-		            jList1.setModel(voteList);  
+		            jList1.setModel(voteList); 
+		            jisoo.pop();
 		        }
 			}
 		});
@@ -205,10 +218,13 @@ public class VOTINGSYSTEM extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 		        if (chckbxNewCheckBox_5.isSelected()){
 		            voteList.addElement(chckbxNewCheckBox_5.getText().toString());
-		            jList1.setModel(voteList);  
+		            jList1.setModel(voteList);
+		            LeeJiun.add(nameLabel.getText());
+		            
 		        }else{
 		           voteList.removeElement(chckbxNewCheckBox_5.getText().toString());
 		            jList1.setModel(voteList);  
+		            LeeJiun.pop();
 		        }
 			}
 		});
@@ -226,6 +242,7 @@ public class VOTINGSYSTEM extends JFrame {
 					public void actionPerformed(ActionEvent e) {
 						voteFrame.setVisible(false);
 						mainMenuFrame.setVisible(true);
+						voters.remove(nameLabel.getText().toString());
 					}
 				});
 				cancelNow.setBounds(227, 221, 141, 23);
@@ -277,21 +294,6 @@ public class VOTINGSYSTEM extends JFrame {
 		JLabel jisooLabel = new JLabel("Jisoo = 0");
 		jisooLabel.setBounds(156, 159, 86, 14);
 		viewVote.add(jisooLabel);
-		mainMenuFrame.setBackground(new Color(244, 164, 96));
-		
-		mainMenuFrame.setBounds(0, 0, 434, 285);
-		contentPane.add(mainMenuFrame);
-		mainMenuFrame.setLayout(null);
-		
-		JLabel lblNewLabel_4 = new JLabel("Main Menu");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(126, 5, 196, 14);
-		mainMenuFrame.add(lblNewLabel_4);
-		
-		JLabel mainMenuMain = new JLabel("New label");
-		mainMenuMain.setHorizontalAlignment(SwingConstants.CENTER);
-		mainMenuMain.setBounds(136, 32, 186, 14);
-		mainMenuFrame.add(mainMenuMain);
 
 		voteNow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -299,19 +301,19 @@ public class VOTINGSYSTEM extends JFrame {
 		            System.out.println("Wow Ang Galing");
 
 		            
-		            LeeJiun += check(chckbxNewCheckBox);
-		            momo += check(chckbxNewCheckBox_1);
-		            sana += check(chckbxNewCheckBox_2);
-		            jisoo += check(chckbxNewCheckBox_3);
-		            mina += check(chckbxNewCheckBox_4);
-		            jennie += check(chckbxNewCheckBox_5);
+//		            LeeJiun += check(chckbxNewCheckBox);
+//		            momo += check(chckbxNewCheckBox_1);
+//		            sana += check(chckbxNewCheckBox_2);
+//		            jisoo += check(chckbxNewCheckBox_3);
+//		            mina += check(chckbxNewCheckBox_4);
+//		            jennie += check(chckbxNewCheckBox_5);
 		            
-		            IULabel.setText("Lee Jieun = " + String.valueOf(LeeJiun));
-		            momoLabel.setText("Momo = " + String.valueOf(momo));
-		            sanaLabel.setText("Somo = " + String.valueOf(sana));
-		            jisooLabel.setText("Jisoo = " + String.valueOf(jisoo));
-		            minaLabel.setText("Mina = " + String.valueOf(mina));
-		            NayeonLabel.setText("Nayeon = " + String.valueOf(jennie));
+		            IULabel.setText("Lee Jieun = " + String.valueOf(LeeJiun.size()));
+		            momoLabel.setText("Momo = " + String.valueOf(momo.size()));
+		            sanaLabel.setText("Somo = " + String.valueOf(sana.size()));
+		            jisooLabel.setText("Jisoo = " + String.valueOf(jisoo.size()));
+		            minaLabel.setText("Mina = " + String.valueOf(mina.size()));
+		            NayeonLabel.setText("Nayeon = " + String.valueOf(nayeon.size()));
 		            
 		            voteFrame.setVisible(false);
 		            viewVote.setVisible(true);
@@ -321,63 +323,6 @@ public class VOTINGSYSTEM extends JFrame {
 		        }
 			}
 		});		
-		
-		JButton voteButton = new JButton("vote");
-		voteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-//				check if the voters are already vote
-				if(voters.contains(mainMenuMain.getText().toString())) {
-					voteButton.setEnabled(false);
-					JOptionPane.showMessageDialog(null, "naka boto kana kaibigan"); 
-				}else {
-					System.out.println("boto kana kapatid");
-					voters.add(mainMenuMain.getText().toString());
-					voteFrame.setVisible(true);
-					mainMenuFrame.setVisible(false);
-				}
-				
-			}
-		});
-		voteButton.setBounds(102, 72, 238, 23);
-		mainMenuFrame.add(voteButton);
-		
-		JButton viewVoteButton = new JButton("View Vote");
-		viewVoteButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				viewVote.setVisible(true);
-				mainMenuFrame.setVisible(false);
-			}
-		});
-		viewVoteButton.setBounds(102, 106, 238, 23);
-		mainMenuFrame.add(viewVoteButton);
-		
-		JButton logoutButton = new JButton("Logout");
-		logoutButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mainMenuFrame.setVisible(false);
-				welcomePanel.setVisible(true);
-				
-//				remove all vote
-				voteList.removeAllElements();
-				voteList.addElement("===================");
-				voteList.addElement("           VOTE 3 ONLY");
-				voteList.addElement("----------------------------------");
-				jList1.setModel(voteList);
-				
-//				Reset chec box
-				chckbxNewCheckBox.setSelected(false);
-				chckbxNewCheckBox_1.setSelected(false);
-				chckbxNewCheckBox_2.setSelected(false);
-				chckbxNewCheckBox_3.setSelected(false);
-				chckbxNewCheckBox_4.setSelected(false);
-				chckbxNewCheckBox_5.setSelected(false);
-				
-				voteButton.setEnabled(true);
-			}
-		});
-		logoutButton.setBounds(102, 140, 238, 23);
-		mainMenuFrame.add(logoutButton);
 		JPanel loginPanel = new JPanel();  //Login frame
 		loginPanel.setBackground(SystemColor.scrollbar);
 		
@@ -495,7 +440,7 @@ public class VOTINGSYSTEM extends JFrame {
 				JOptionPane.showMessageDialog(null, "Your new Username is " + randomUsername);
 				
 //				main menu label for name
-				mainMenuMain.setText(fullName.getText().toString());
+				nameLabel.setText(fullName.getText().toString());
 				
 				signUpPanel.setVisible(false);
 				loginPanel.setVisible(true);
@@ -554,5 +499,80 @@ public class VOTINGSYSTEM extends JFrame {
 		});
 		signUpButton.setBounds(162, 120, 89, 23);
 		welcomePanel.add(signUpButton);
+
+		
+		mainMenuFrame.setVisible(false);	
+		mainMenuFrame.setBackground(new Color(244, 164, 96));
+		
+		mainMenuFrame.setBounds(0, 0, 434, 285);
+		contentPane.add(mainMenuFrame);
+		mainMenuFrame.setLayout(null);
+		
+		JLabel mainMenuMain = new JLabel("Main Menu");
+		mainMenuMain.setHorizontalAlignment(SwingConstants.CENTER);
+		mainMenuMain.setBounds(126, 5, 196, 14);
+		mainMenuFrame.add(mainMenuMain);
+		
+		
+		nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		nameLabel.setBounds(136, 32, 186, 14);
+		mainMenuFrame.add(nameLabel);
+		
+		JButton voteButton = new JButton("vote");
+		voteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+//				check if the voters are already vote
+				if(voters.contains(nameLabel.getText().toString())) {
+					voteButton.setEnabled(false);
+					JOptionPane.showMessageDialog(null, "naka boto kana kaibigan"); 
+				}else {
+					System.out.println("boto kana kapatid");
+					voters.add(nameLabel.getText().toString());
+					voteFrame.setVisible(true);
+					mainMenuFrame.setVisible(false);
+				}
+				
+			}
+		});
+		voteButton.setBounds(102, 72, 238, 23);
+		mainMenuFrame.add(voteButton);
+		
+		JButton viewVoteButton = new JButton("View Vote");
+		viewVoteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				viewVote.setVisible(true);
+				mainMenuFrame.setVisible(false);
+			}
+		});
+		viewVoteButton.setBounds(102, 106, 238, 23);
+		mainMenuFrame.add(viewVoteButton);
+		
+		JButton logoutButton = new JButton("Logout");
+		logoutButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainMenuFrame.setVisible(false);
+				welcomePanel.setVisible(true);
+				
+//				remove all vote
+				voteList.removeAllElements();
+				voteList.addElement("===================");
+				voteList.addElement("           VOTE 3 ONLY");
+				voteList.addElement("----------------------------------");
+				jList1.setModel(voteList);
+				
+//				Reset chec box
+				chckbxNewCheckBox.setSelected(false);
+				chckbxNewCheckBox_1.setSelected(false);
+				chckbxNewCheckBox_2.setSelected(false);
+				chckbxNewCheckBox_3.setSelected(false);
+				chckbxNewCheckBox_4.setSelected(false);
+				chckbxNewCheckBox_5.setSelected(false);
+				
+				voteButton.setEnabled(true);
+			}
+		});
+		logoutButton.setBounds(102, 140, 238, 23);
+		mainMenuFrame.add(logoutButton);
 	}
 }
