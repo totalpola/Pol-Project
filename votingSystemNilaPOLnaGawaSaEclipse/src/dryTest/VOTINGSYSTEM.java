@@ -11,12 +11,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JCheckBox;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
@@ -40,6 +44,11 @@ public class VOTINGSYSTEM extends JFrame {
 			public void run() {
 				try {
 					VOTINGSYSTEM frame = new VOTINGSYSTEM();
+					
+			        //PANG CENTER NG FRAME ITOOOO
+			        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,16 +71,17 @@ public class VOTINGSYSTEM extends JFrame {
 	DefaultListModel<String> voteList = new DefaultListModel();
 	
 	//candidates
-	Stack<String> LeeJiun = new Stack();  
-	Stack<String> momo = new Stack();  
-	Stack<String> sana = new Stack();  
-	Stack<String> jisoo = new Stack();  
-	Stack<String> mina = new Stack();  
-	Stack<String> nayeon = new Stack();  
+	Stack<String> LeeJiun = new Stack<String>();  
+	Stack<String> momo = new Stack<String>();  
+	Stack<String> sana = new Stack<String>();  
+	Stack<String> jisoo = new Stack<String>();  
+	Stack<String> mina = new Stack<String>();  
+	Stack<String> nayeon = new Stack<String>();  
 
 	
 //	ichehcheck lang niya kung nasa `votelist` ba yung nka check
-    private int check(JCheckBox check){
+    @SuppressWarnings("unused")
+	private int check(JCheckBox check){
         if (voteList.contains(check.getText().toString()))
         {
             return 1;

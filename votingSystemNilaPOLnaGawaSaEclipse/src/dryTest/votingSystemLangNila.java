@@ -1,6 +1,7 @@
 package dryTest;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -23,6 +24,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.UIManager;
 
 
@@ -80,6 +83,11 @@ public class votingSystemLangNila extends JFrame {
 			public void run() {
 				try {					
 					votingSystemLangNila frame = new votingSystemLangNila();
+					
+			        //PANG CENTER NG FRAME ITOOOO
+			        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -318,6 +326,11 @@ public class votingSystemLangNila extends JFrame {
 						mainMenu.setVisible(false);
 						voteNow.setVisible(true);
 						setBounds(100, 100, 405, 538);	
+						
+				        //PANG CENTER NG FRAME ITOOOO
+				        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+				        setLocation(dim.width/2-getSize().width/2, dim.height/2-getSize().height/2);
+				        
 					}
 
 				}
@@ -330,6 +343,10 @@ public class votingSystemLangNila extends JFrame {
 					mainMenu.setVisible(false);
 					viewVote.setVisible(true);
 					setBounds(100, 100, 408, 577);
+					
+			        //PANG CENTER NG FRAME ITOOOO
+			        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			        setLocation(dim.width/2-getSize().width/2, dim.height/2-getSize().height/2);
 				}
 			});		
 		
@@ -339,6 +356,11 @@ public class votingSystemLangNila extends JFrame {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setBounds(100, 100, 453, 339);
+				
+		        //PANG CENTER NG FRAME ITOOOO
+		        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		        setLocation(dim.width/2-getSize().width/2, dim.height/2-getSize().height/2);
+		        
 				mainMenu.setVisible(true);
 				viewVote.setVisible(false);
 			}
@@ -401,6 +423,11 @@ public class votingSystemLangNila extends JFrame {
 				btnNewButton_3.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						setBounds(100, 100, 453, 339);
+						
+				        //PANG CENTER NG FRAME ITOOOO
+				        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+				        setLocation(dim.width/2-getSize().width/2, dim.height/2-getSize().height/2);
+						
 						voterUser.remove(Name.getText().toString());
 						voteBttn.setEnabled(true);
 						mainMenu.setVisible(true);

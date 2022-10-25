@@ -1,6 +1,8 @@
 package dryTest;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,6 +35,11 @@ public class registrationSytemLang extends JFrame {
 			public void run() {
 				try {
 					registrationSytemLang frame = new registrationSytemLang();
+					
+			        //PANG CENTER NG FRAME ITOOOO
+			        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+			        
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,6 +52,11 @@ public class registrationSytemLang extends JFrame {
 	 * Create the frame.
 	 */
 	public registrationSytemLang() {
+		
+		
+
+        
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
